@@ -1,20 +1,20 @@
-<#
-.SYNOPSIS
-    This function encrypts a plaintext string using a provided key.
-
-.DESCRIPTION
-    Encrypt-String takes a key and a plaintext string as parameters, encrypts the string using the key, and returns the encrypted data.
-
-.PARAMETER Key
-    Encryption key, should be between 16 and 32 characters.
-
-.PARAMETER Plaintext
-    The string to be encrypted.
-
-.EXAMPLE
-    PS> Encrypt-String -Key 'mySecureKey' -Plaintext 'Hello, World!'
-#>
 Function Encrypt-String {
+    <#
+    .SYNOPSIS
+        This function encrypts a plaintext string using a provided key.
+
+    .DESCRIPTION
+        Encrypt-String takes a key and a plaintext string as parameters, encrypts the string using the key, and returns the encrypted data.
+
+    .PARAMETER Key
+        Encryption key, should be between 16 and 32 characters.
+
+    .PARAMETER Plaintext
+        The string to be encrypted.
+
+    .EXAMPLE
+        PS> Encrypt-String -Key 'mySecureKey' -Plaintext 'Hello, World!'
+    #>
     Param (
         [string]$Key,
         [string]$Plaintext
@@ -44,23 +44,23 @@ Function Encrypt-String {
     Return $EncryptedData
 }
 
-<#
-.SYNOPSIS
-    This function decrypts an encrypted string using a provided key.
-
-.DESCRIPTION
-    Decrypt-String takes a key and encrypted data as parameters, decrypts the data using the key, and returns the plaintext string.
-
-.PARAMETER Key
-    Decryption key, should be between 16 and 32 characters.
-
-.PARAMETER EncryptedData
-    The data to be decrypted.
-
-.EXAMPLE
-    PS> Decrypt-String -Key 'mySecureKey' -EncryptedData $encryptedData
-#>
 Function Decrypt-String {
+    <#
+    .SYNOPSIS
+        This function decrypts an encrypted string using a provided key.
+
+    .DESCRIPTION
+        Decrypt-String takes a key and encrypted data as parameters, decrypts the data using the key, and returns the plaintext string.
+
+    .PARAMETER Key
+        Decryption key, should be between 16 and 32 characters.
+
+    .PARAMETER EncryptedData
+        The data to be decrypted.
+
+    .EXAMPLE
+        PS> Decrypt-String -Key 'mySecureKey' -EncryptedData $encryptedData
+    #>
     Param (
         [string]$Key,
         [string]$EncryptedData
