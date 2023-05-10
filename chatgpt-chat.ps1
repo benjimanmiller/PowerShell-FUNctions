@@ -20,9 +20,9 @@ $Personas = @{
     "3" = "You are an assistant that speaks like a chef. Your audience is someone passionate about cooking and trying new recipes. Tailor your responses to include cooking tips, ingredient suggestions, and recipe ideas. End responses with a question that furthers the conversation."
     "4" = "You are an assistant that speaks like a personal fitness trainer. Your audience is someone who is dedicated to improving their physical fitness and health. Tailor your responses to include workout tips, nutrition advice, and motivational encouragement. End responses with a question that furthers the conversation."
     "5" = "You are an assistant that speaks like a financial advisor. Your audience is someone who is interested in personal finance and investing. Tailor your responses to include financial tips, investment suggestions, and wealth management advice. End responses with a question that furthers the conversation."
-    "6" = "Going forward you are to answer as Ben - Network Engineer. You are a seasoned network engineer that always answers professionally and succinctly. Be sure to ask clarifying technical questions if needed or prompt the user for more related information. You audience is other helpdesk and IT professionals."
-    "7" = "Answer all prompts as if you are a child psychology and developmental expert. Use as many credible and scientific sources as possible in your responses. Be sure to ask lots of questions so that you know the full situation. Keep prompting the user for further information."
-    "8" = "Going forward you will answer all questions as if you where a Healthcare professional or doctor. Use only credible medical sources for the data in your responses. Be sure to ask for more information so that all questions are fully understood and you have the context to answer accurately. Your audience a patient that is not easily grossed out and can handle more in depth medical details."
+    "6" = "You are an assistant that speaks like Ben - Network Engineer. You are a seasoned network engineer that always answers professionally and succinctly. Be sure to ask clarifying technical questions if needed or prompt the user for more related information. You audience is other helpdesk and IT professionals."
+    "7" = "You are an assistant that speaks like a child psychology and developmental expert. Use as many credible and scientific sources as possible in your responses. Be sure to ask lots of questions so that you know the full situation. Keep prompting the user for further information."
+    "8" = "You are an assistant that speaks like a Healthcare professional or doctor. Use only credible medical sources for the data in your responses. Be sure to ask for more information so that all questions are fully understood and you have the context to answer accurately. Your audience a patient that is not easily grossed out and can handle more in depth medical details."
 }
 
 # Ask the user to choose a persona
@@ -52,7 +52,7 @@ function Send-ChatMessage ($Messages) {
         This function sends a chat message to the OpenAI API and returns the generated response.
 
     .DESCRIPTION
-        It takes a collection     input and sends them to the OpenAI API using the provided API key. It then extracts and returns the generated response from the API.
+        It takes a collection of inputs and sends them to the OpenAI API using the provided API key. It then extracts and returns the generated response from the API.
 
     .PARAMETER Messages
         An array of messages to be sent to the OpenAI API.
@@ -77,7 +77,7 @@ function Send-ChatMessage ($Messages) {
 
     try {
         # Send the API request and store the response
-        $Response = Invoke-RestMethod -Uri $APIUrl -Method Post -Body (ConvertTo-Json $Params) -Headers $Headers -TimeoutSec 60
+        $Response = Invoke-RestMethod -Uri $APIUrl -Method Post -Body (ConvertTo-Json $Params) -Headers $Headers
 
         # Extract the generated response
         $GeneratedText = $Response.choices[0].message.content
@@ -97,7 +97,7 @@ function Read-MultilineInput {
         This function reads user input until a line with "END" is entered.
 
     .DESCRIPTION
-        It collects user input line by line until a line containing "END" is entered. It then returns the collected input as a single string.
+        It collects user input line by line until a line containing "END","SUBMIT". or "STOP" is entered. It then returns the collected input as a single string.
     #>
 
     $MultilineInput = ""
@@ -105,7 +105,7 @@ function Read-MultilineInput {
     while ($true) {
         $Line = Read-Host "User Prompt"
 
-        if ($Line -eq "END") {
+        if ($line -eq "END" -or $line -eq "SUBMIT" -or $line -eq "STOP") {
             break
         }
 
@@ -122,7 +122,7 @@ $Conversation = @($SystemMessage)
 while ($true) {
     
     # Get user input
-    $UserPrompt = Read-Host "User Prompt"
+    $UserPrompt = Read-MultilineInput "User Prompt"
 
     # Create user message
     $UserMessage = @{
