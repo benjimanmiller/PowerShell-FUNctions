@@ -1,11 +1,16 @@
+Function Bitcoin-Notice {
 <#
 .SYNOPSIS
-    This script monitors the current price of Bitcoin and provides an audible alert for significant changes.
+    This function monitors the current price of Bitcoin and provides an audible alert for significant changes.
 
 .DESCRIPTION
-    This script uses the coindesk API to get the current price of Bitcoin every 10 minutes. 
+    This function uses the coindesk API to get the current price of Bitcoin every 10 minutes. 
     If the price difference is more than 25 USD, it plays a sound file. 
-    The script then uses System.Speech.Synthesis to provide an audible update of the current price.
+    The function then uses System.Speech.Synthesis to provide an audible update of the current price.
+
+.EXAMPLE
+    Bitcoin-Notice
+    
 #>
 
 # Import required assemblies
@@ -59,4 +64,5 @@ While ($true) {
     }
 
     $StartingRate = $CurrentRate
+}
 }

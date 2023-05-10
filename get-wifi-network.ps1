@@ -9,6 +9,7 @@ Function Get-Wifi-Network {
 
     .EXAMPLE
         Get-Wifi-Network
+        
     #>
     End {
         Netsh Wlan Sh Net Mode=Bssid | ForEach-Object -Process {

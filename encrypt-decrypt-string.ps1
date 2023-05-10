@@ -14,6 +14,7 @@ Function Encrypt-String {
 
     .EXAMPLE
         PS> Encrypt-String -Key 'mySecureKey' -Plaintext 'Hello, World!'
+        
     #>
     Param (
         [string]$Key,
@@ -60,6 +61,7 @@ Function Decrypt-String {
 
     .EXAMPLE
         PS> Decrypt-String -Key 'mySecureKey' -EncryptedData $encryptedData
+
     #>
     Param (
         [string]$Key,

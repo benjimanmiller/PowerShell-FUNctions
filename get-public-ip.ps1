@@ -6,6 +6,7 @@ Function Get-Public-IP {
     .DESCRIPTION
         It sends requests to ip4.me and ip6.me services, respectively, to get the public IPv4 and IPv6 addresses. 
         The addresses are then stored in global variables, $IP4 and $IP6.
+        
     #>
 
     # CmdletBinding for Write-Host to work

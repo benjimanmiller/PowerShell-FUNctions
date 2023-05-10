@@ -1,10 +1,15 @@
+Function ChatGPT-Chat {
 <#
 .SYNOPSIS
-    This script interacts with the OpenAI ChatGPT API using various personas.
+    This function interacts with the OpenAI ChatGPT API using various personas.
 
 .DESCRIPTION
-    This script allows a user to select a persona for the ChatGPT model and interact with it using that persona.
+    This function allows a user to select a persona for the ChatGPT model and interact with it using that persona.
     The personas are predefined with specific characteristics and behaviors.
+
+.EXAMPLE
+    ChatGPT-Chat   
+    
 #>
 
 # Set API Key
@@ -145,4 +150,5 @@ while ($true) {
         "content" = $GeneratedText
     }
     $Conversation += $AssistantMessage
+}
 }

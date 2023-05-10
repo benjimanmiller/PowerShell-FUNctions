@@ -1,13 +1,15 @@
+Function Kirby-Dance {
 <#
 .SYNOPSIS
-    This script displays a dancing ASCII figure in the console.
+    This function displays a dancing ASCII figure in the console.
 
 .DESCRIPTION
-    The script creates an ASCII animation by looping over pre-defined frames. 
+    The function creates an ASCII animation by looping over pre-defined frames. 
     It controls the speed of the animation and the number of times the animation is looped.
 
 .EXAMPLE
-    PS> .\DancingAscii.ps1
+    Kirby-Dance
+    
 #>
 
 # Define the ASCII animation frames
@@ -35,3 +37,4 @@ Do {
     }
     $Counter++    
 } Until ($Counter -eq $AnimationLoopNumber)
+}
