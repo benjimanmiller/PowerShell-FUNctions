@@ -7,6 +7,7 @@
 ."$PSScriptRoot\get-wifi-network.ps1"
 ."$PSScriptRoot\kirby-dance.ps1"
 ."$PSScriptRoot\roll-dice.ps1"
+."$PSScriptRoot\wardrive.ps1"
 ."$PSScriptRoot\SSH-Bruteforcer\BruteForce-SSH-Server.ps1"
 
 #Loads some modules
